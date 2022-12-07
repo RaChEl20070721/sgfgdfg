@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <div class="container d-flex justify-content-center align-items-center">
+            <span class="text-dark h1">狗</span> <span class="text-primary h1">介紹</span>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 my-3" id="card-container">
+    </div>
+
+    <div class="bg-light text-center mt-3">
+        <div class="py-3">竹山高中 - 應用資訊社</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        var img_urls = [
+            "https://i.imgur.com/kie85d9.jpg",
+            "https://i.imgur.com/m62t8Nw.jpg",
+            "https://i.imgur.com/hbm74Pl.jpg",
+            "https://i.imgur.com/78JiJRL.jpg",
+            "https://i.imgur.com/NIFqnzG.jpg",
+        ]
+        var img_headers = [
+            "臘腸犬",
+            "潘布魯克威爾斯柯基犬",
+            "黃金獵犬",
+            "拉不拉多尋回犬",
+            "博美犬",
+        ]
+        var text_contents = [
+            "臘腸犬，又稱達克斯獵犬（德語：Dachshund），是一種短腿，長身的獵犬。 其名源於德國，「Dachs」意思是獾，「Hund」意思是狗，原意「獾狗」。 此品種被發展為嗅獵、追蹤或捕殺獾類及其他穴居動物。",
+            "潘布魯克威爾斯柯基犬的成犬身高介於10-12英吋（25.5-30.5公分），體重介於23-28磅（10-13公斤）。 一歲左右發育成熟，不過有些狗會一直長到兩歲甚至三歲。 柯基犬的雙層短毛很耐風雨。",
+            "黃金獵犬的毛髮防潑水，有的呈波浪狀，有的平直，顏色從金色和奶油色都有。 此犬種最吸引人的特徵之一就是其頸部、四肢、大腿、下腹部、和尾巴的羽狀毛。 此犬種頭部強壯寬闊。 耳朵不算太大，但聳立在頭上，垂到下頜的輪廓下。",
+            "拉布拉多尋回犬（英語：Labrador Retriever），簡稱拉布拉多犬（Labrador），是一種起源於加拿大紐芬蘭與拉布拉多省的中大型尋回犬，因為智商高且個性溫和、活潑，較沒有攻擊性，非常適合被選作寵物犬、導盲犬或其他工作犬，與金毛尋回犬、哈士奇並列三大低攻擊性犬種。拉布拉多是美國犬業俱樂部中目前登記數量最多的品種。",
+            "博美犬的頭部為契形，使它看起來有著狐貍臉；牠耳朵小而尖，作為血統特徵的尾巴必須豎起，而其上蓬鬆的毛平展在背上。 博美的被毛是其榮耀，分為兩層內層被毛和上層被毛——前者為柔軟厚毛茸茸的，後者則為長毛直且閃耀的覆蓋全身，在天氣暖活時博美會掉內層被毛。",
+        ]
+
+        $(document).ready(function() {
+            if (img_urls.length !== img_headers.length || img_headers.length != text_contents.length) {
+                alert("圖片、標題、內文的個數不符");
+                return;
+            }
+
+            var card_container = $("#card-container");
+            for (let i = 0; i < img_urls.length; i++) {
+                var img = img_urls[i];
+                var header = img_headers[i]
+                var content = text_contents[i]
+                var element = $($.parseHTML(`
+                    <div class="col">
+                        <div class="card">
+                            <img src="${img}" class="card-img-top" alt="img alt ${i}">
+                            <div class="card-body">
+                            <h5 class="card-title" id="test111">${header}</h5>
+                            <p class="card-text">${content}</p>
+                            </div>
+                        </div>
+                    </div>
+                `));
+                card_container.append(element);
+            }
+        })
+
+    </script>
+</body>
+
+</html>
